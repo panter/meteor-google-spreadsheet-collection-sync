@@ -13,12 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.8.1')
   api.use('ecmascript')
+  api.use('webapp')
+  api.use('panter:google-api-auth')
   api.mainModule('google-spreadsheet-collection-sync.js')
-})
-
-Package.onTest(function(api) {
-  api.use('ecmascript')
-  api.use('tinytest')
-  api.use('panter:google-spreadsheet-collection-sync')
-  api.mainModule('google-spreadsheet-collection-sync-tests.js')
 })
