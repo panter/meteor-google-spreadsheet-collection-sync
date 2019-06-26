@@ -7,13 +7,13 @@ Package.describe({
   git: '',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md',
+  documentation: 'README.md'
 })
 
 Package.onUse(function(api) {
   api.versionsFrom('1.8.1')
   api.use('ecmascript')
   api.use('webapp')
-  api.use('panter:google-api-auth')
+  api.use('panter:google-api-auth@0.0.1')
   api.mainModule('google-spreadsheet-collection-sync.js')
 })
