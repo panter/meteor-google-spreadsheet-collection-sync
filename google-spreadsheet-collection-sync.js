@@ -10,7 +10,7 @@ const WEBHOOKS = {}
 
 const DEFAULT_FORMATTERS = {
   Number,
-  Boolean,
+  Boolean
 }
 export class CollectionSyncer {
   constructor({
@@ -27,7 +27,7 @@ export class CollectionSyncer {
     excludeKeys = [],
     deleteUnusedSelector = {},
     additionalProps,
-    webhookPrefix = '/_hooks/sync',
+    webhookPrefix = '/_hooks/sync'
   }) {
     this.rowFilter = rowFilter
     this.deleteUnusedSelector = deleteUnusedSelector
@@ -50,7 +50,7 @@ export class CollectionSyncer {
     this.typesIndex = typesIndex
     this.formatters = {
       ...DEFAULT_FORMATTERS,
-      ...formatters,
+      ...formatters
     }
     this.setupHooks()
   }
@@ -77,22 +77,22 @@ export class CollectionSyncer {
 
       this.collection.upsert(
         {
-          _id,
+          _id
         },
         {
           $set: {
             ...data,
             ...(this.additionalProps
               ? this.additionalProps({ _id, ...row })
-              : {}),
-          },
+              : {})
+          }
         }
       )
     })
 
     this.collection.remove({
       _id: { $nin: idsSynced },
-      ...this.deleteUnusedSelector,
+      ...this.deleteUnusedSelector
     })
   }
 
@@ -100,7 +100,7 @@ export class CollectionSyncer {
     const result = this.getValuesSync({
       spreadsheetId: this.spreadsheetId,
       range: `'${this.sheetName}'!A1:AH999999`,
-      majorDimension: 'ROWS',
+      majorDimension: 'ROWS'
     })
     const { values } = result.data
 
