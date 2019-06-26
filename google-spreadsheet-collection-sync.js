@@ -1,9 +1,10 @@
 import { google } from 'googleapis'
+import { set, omit } from 'lodash'
 
 import { Meteor } from 'meteor/meteor'
-import { set, omit } from 'lodash'
-import { createAuth } from 'meteor/panter:google-api-auth'
+import { Promise } from 'meteor/promise'
 import { WebApp } from 'meteor/webapp'
+import { createAuth } from 'meteor/panter:google-api-auth'
 
 const WEBHOOKS = {}
 
@@ -137,6 +138,7 @@ export class CollectionSyncer {
     }`
     if (!WEBHOOKS[webhook]) {
       WEBHOOKS[webhook] = [this]
+      console.log(`creating webhook: ${Meteor.absoluteUrl(webhook)}`)
 
       WebApp.connectHandlers.use(webhook, (req, res, next) => {
         WEBHOOKS[webhook].forEach(syncer => syncer.sync())
