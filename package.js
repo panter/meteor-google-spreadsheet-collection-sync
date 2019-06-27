@@ -14,6 +14,6 @@ Package.onUse(function(api) {
   api.versionsFrom('1.8.1')
   api.use('ecmascript')
   api.use('webapp')
-  api.use('panter:google-api-auth@0.0.1')
+  api.use('panter:google-api-auth@0.0.2')
   api.mainModule('google-spreadsheet-collection-sync.js', ['server'])
 })
