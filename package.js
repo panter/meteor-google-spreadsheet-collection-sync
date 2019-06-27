@@ -1,6 +1,6 @@
 Package.describe({
   name: 'panter:google-spreadsheet-collection-sync',
-  version: '0.0.2',
+  version: '0.0.3',
   // Brief, one-line summary of the package.
   summary: 'easily snyc collections with a google spreadsheet',
   // URL to the Git repository containing the source code for this package.
@@ -15,5 +15,5 @@ Package.onUse(function(api) {
   api.use('ecmascript')
   api.use('webapp')
   api.use('panter:google-api-auth@0.0.1')
-  api.mainModule('google-spreadsheet-collection-sync.js')
+  api.mainModule('google-spreadsheet-collection-sync.js', ['server'])
 })
